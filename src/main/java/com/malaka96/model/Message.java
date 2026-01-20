@@ -11,5 +11,6 @@ public class Message {
     public String type;     // CREATE_ROOM, JOIN_ROOM, RESPONSE
     public String roomId;
     public String playerId;
-    public String content;
+    public String message;
+    public String playerName;
 }
