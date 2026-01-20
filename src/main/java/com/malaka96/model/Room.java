@@ -1,21 +1,30 @@
 package com.malaka96.model;
 
+import lombok.*;
+
 import java.util.HashSet;
 import java.util.Set;
-
-
-import lombok.*;
 
 @Getter
 @Setter
 @NoArgsConstructor
-@AllArgsConstructor
-@ToString
 public class Room {
-    public String roomId;
-    public Set<String> players = new HashSet<>();
 
-    public Room(String roomId) {
+    private String roomId;
+    private String hostPlayerId;           // ← NEW: who created the room
+    private Set<String> players = new HashSet<>();
+
+    public Room(String roomId, String hostPlayerId) {
         this.roomId = roomId;
+        this.hostPlayerId = hostPlayerId;
+        this.players.add(hostPlayerId);    // host is also a player
+    }
+
+    public boolean isHost(String playerId) {
+        return hostPlayerId != null && hostPlayerId.equals(playerId);
+    }
+
+    public boolean canStartGame() {
+        return players.size() >= 2;
     }
 }

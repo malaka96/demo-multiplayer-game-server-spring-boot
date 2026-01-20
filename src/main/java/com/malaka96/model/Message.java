@@ -1,16 +1,15 @@
 package com.malaka96.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.*;
 
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
-@ToString
+@Getter @Setter
+@NoArgsConstructor @AllArgsConstructor
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Message {
-    public String type;     // CREATE_ROOM, JOIN_ROOM, RESPONSE
-    public String roomId;
-    public String playerId;
-    public String message;
-    public String playerName;
+    private String type;
+    private String roomId;
+    private String playerId;
+    private String playerName;
+    private String message;
 }
